@@ -117,6 +117,16 @@ void List::pop_back() {
 }
 
 void List::erase(Node* pos) {
+    Node* start = head;
+    while (start != nullptr) {
+        if (start == pos) {
+            break;
+        }
+        start = start->next;
+    }
+    if (start == nullptr) {
+        throw std::runtime_error("Incorrect position!");
+    }
     if (pos == nullptr) {
         throw std::runtime_error("Incorrect position!");
     }
