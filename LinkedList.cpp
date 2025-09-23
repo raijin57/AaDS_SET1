@@ -11,11 +11,7 @@ List::List() {
 }
 
 List::List(const List& other) : List() {
-    Node* temp = other.head;
-    while (temp != nullptr) {
-        push_back(temp->value);
-        temp = temp->next;
-    }
+    copy(other);
 }
 
 List::List(std::vector<int> array) : List() {
@@ -204,7 +200,7 @@ bool List::check_cycle() const {
     }
     Node* turtle = head;
     Node* hare = head;
-    while (hare != nullptr && hare->next != nullptr) {
+    while (hare != nullptr) {
         turtle = turtle->next;
         hare = hare->next;
         if (hare != nullptr) {
